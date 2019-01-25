@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  attr_accessor :name
-  validates :name, presence: true
+  # attr_accessor :name
+  validates :name, presence: true, length: { maximum: 50 }
+  validates :email, presence: true, length: { maximum: 255 }
 end
