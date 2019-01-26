@@ -8,7 +8,7 @@ class UsersControllerControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should redirect show and index if not logged in" do
-    get user_path(:example_user)
+    get user_path(@user)
     assert_redirected_to new_user_session_path
     get users_path
     assert_redirected_to new_user_session_path
