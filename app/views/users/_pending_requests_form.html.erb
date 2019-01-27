@@ -1,0 +1,21 @@
+<% if current_user.requesting_friends.any? %>
+  <div class="friends requesting">
+    <p>You have requests to be friends with:</p>
+    <ul>
+    <% current_user.requesting_friends.each do |friend| %>
+      <li><%= friend.name %></li>
+    <% end %>
+    <ul>
+  </div>
+<% end %>
+
+<% if current_user.requested_friends.any? %>
+  <div class="friends requested">
+    <p>Requests you sent are still pending to:</p>
+    <ul>
+    <% current_user.requested_friends.each do |friend| %>
+      <li><%= friend.name %></li>
+    <% end %>
+    <ul>
+  </div>
+<% end %>

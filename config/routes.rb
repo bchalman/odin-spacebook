@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root 'static_pages#home'
 
   resources :users, only: [:index, :show]
+  resources :friend_requests, only: [:create, :destroy]
 end
