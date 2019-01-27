@@ -19,4 +19,9 @@ class UsersControllerControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should redirect friends when not logged in" do
+    get friends_user_path(@user)
+    assert_redirected_to new_user_session_path
+  end
+
 end

@@ -1,0 +1,9 @@
+<% @user ||= current_user %>
+<div class="stats">
+  <a href="<%= friends_user_path(@user) %>">
+    <strong id="friends" class="stat">
+      <%= cnt = @user.friends.count %>
+    </strong>
+    <%= 'friend'.pluralize(@user.friends.count) %>
+  </a>
+</div>

@@ -1,6 +1,6 @@
 <%= form_for(current_user.sent_friend_requests.find_by(recipient_id: @user.id),
-             html: { method: :delete },
-             remote: true
+             html: { method: :delete }#,
+             #remote: true
              ) do |f| %>
   <%= f.submit "Take back friend request", class: "button" %>
 <% end %>

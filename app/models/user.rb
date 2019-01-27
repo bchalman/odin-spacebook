@@ -12,10 +12,11 @@ class User < ApplicationRecord
   has_many :requested_friends, through: :sent_friend_requests, source: :recipient
   has_many :received_friend_requests, foreign_key: :recipient_id, class_name: "FriendRequest", dependent: :destroy
   has_many :requesting_friends, through: :received_friend_requests, source: :sender
+  has_many :friendships, foreign_key: :user_id, dependent: :destroy
+  has_many :friends, through: :friendships, source: :friend
 
   def send_friend_request_to(other_user)
     requested_friends << other_user
-    # other_user.requesting_friends << self
   end
 
   def already_sent_friend_request_to?(other_user)
@@ -24,5 +25,13 @@ class User < ApplicationRecord
 
   def remove_friend_request(other_user)
     requested_friends.delete(other_user)
+  end
+
+  def accept_friend_request_from(other_user)
+    friends << other_user
+  end
+
+  def remove_friendship_with(other_user)
+    friendships.find_by(friend_id: other_user.id).destroy
   end
 end

@@ -1,16 +1,17 @@
 <% if current_user.requesting_friends.any? %>
-  <div class="friends requesting">
+  <div class="friends_requesting">
     <p>You have requests to be friends with:</p>
     <ul>
     <% current_user.requesting_friends.each do |friend| %>
-      <li><%= friend.name %></li>
+      <li><%= link_to friend.name, friend %> |
+          <%= render partial: 'accept_request', locals: {user: friend} %></li>
     <% end %>
     <ul>
   </div>
 <% end %>
 
 <% if current_user.requested_friends.any? %>
-  <div class="friends requested">
+  <div class="friends_requested">
     <p>Requests you sent are still pending to:</p>
     <ul>
     <% current_user.requested_friends.each do |friend| %>

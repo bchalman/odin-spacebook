@@ -1,7 +1,12 @@
 <h1><%= @user.name %>'s Profile</h1>
 
-<div class="container">
-  <%= render 'friend_request_form' if user_signed_in? %>
+<div>
+  <div>
+    <%= render 'shared/stats' %>
+  </section>
+  <div>
+    <%= render 'friend_form' if user_signed_in? %>
+  </div>
 </div>
 
 <div class="pending_requests">

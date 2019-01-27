@@ -1,9 +1,0 @@
-<% unless current_user == @user %>
-  <div id="friend_request_form">
-    <% if current_user.already_sent_friend_request_to?(@user) %>
-      <%= render 'remove_request' %>
-    <% else %>
-      <%= render 'send_request' %>
-    <% end %>
-  </div>
-<% end %>

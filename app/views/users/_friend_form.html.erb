@@ -1,0 +1,15 @@
+<% unless current_user == @user %>
+  <div id="friend_form">
+    <% if current_user.friends.include?(@user) %>
+      <p>You are friends with <%= @user.name %></p>
+      <%= render 'unfriend' %>
+    <% elsif @user.already_sent_friend_request_to?(current_user) %>
+      <p><%= @user.name %> has requested to be your friend!</p>
+      <%= render partial: 'accept_request', locals: {user: @user} %>
+    <% elsif current_user.already_sent_friend_request_to?(@user) %>
+      <%= render 'remove_request' %>
+    <% else %>
+      <%= render 'send_request' %>
+    <% end %>
+  </div>
+<% end %>
