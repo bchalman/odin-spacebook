@@ -35,6 +35,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
 gem 'will_paginate'
+gem 'jquery-rails'
 
 # gem 'bootstrap-will_paginate',
 # gem 'bootstrap-sass',
