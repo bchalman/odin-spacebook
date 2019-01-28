@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :requesting_friends, through: :received_friend_requests, source: :sender
   has_many :friendships, foreign_key: :user_id, dependent: :destroy
   has_many :friends, through: :friendships, source: :friend
+  has_many :posts, foreign_key: :author_id, dependent: :destroy
 
   def send_friend_request_to(other_user)
     requested_friends << other_user
@@ -33,5 +34,12 @@ class User < ApplicationRecord
 
   def remove_friendship_with(other_user)
     friendships.find_by(friend_id: other_user.id).destroy
+  end
+
+  def feed
+    friend_ids = "SELECT friend_id FROM friendships
+                  WHERE  user_id = :author_id"
+    Post.where("author_id IN (#{friend_ids})
+                OR author_id = :author_id", author_id: id)
   end
 end

@@ -77,5 +77,32 @@ class UserTest < ActiveSupport::TestCase
      @user.password = @user.password_confirmation = "a" * 5
      assert_not @user.valid?
    end
-   
+
+   test "associated posts should be destroyed with user" do
+     @user.save
+     @user.posts.create!(content: "test")
+     assert_difference 'Post.count', -1 do
+       @user.destroy
+     end
+   end
+
+   test "feed should only contain posts from friends" do
+     ben = users(:ben)
+     kim = users(:kim)
+     kim.friends<<ben
+     user_1 = users(:user_1)
+     # posts from friends
+     ben.posts.each do |post|
+       assert kim.feed.include?(post)
+     end
+     # posts from self
+     ben.posts.each do |post|
+       assert ben.feed.include?(post)
+     end
+     # posts from non-friend
+     ben.posts.each do |post|
+       assert_not user_1.feed.include?(post)
+     end
+   end
+
 end

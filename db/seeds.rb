@@ -22,3 +22,18 @@ users = User.all
 user = users.first
 friends = users[2..40]
 friends.each {|friend| user.accept_friend_request_from(friend)}
+
+
+# Posts
+
+users = User.order(:created_at).take(6)
+
+30.times do
+  moon = Faker::Space.moon
+  content = "Spent much of my youth dreaming about #{moon}."
+  users.each { |user| user.posts.create!(content: content) }
+end
+
+galaxy = Faker::Space.galaxy
+content = "My favorite galaxy is #{galaxy}."
+users.each { |user| user.posts.create!(content: content) }

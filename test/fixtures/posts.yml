@@ -1,0 +1,42 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  content: "Bring"
+  created_at: <%= 5.minutes.ago %>
+  author: ben
+
+two:
+  content: "me"
+  created_at: <%= 1.year.ago %>
+  author: ben
+
+three:
+  content: "to the"
+  created_at: <%= 2.hours.ago %>
+  author: ben
+
+most_recent:
+  content: "Moon"
+  created_at: <%= Time.zone.now %>
+  author: ben
+
+<% 30.times do |n| %>
+post_<%= n %>:
+  content: <%= Faker::Lorem.sentence(5) %>
+  created_at: <%= 42.days.ago %>
+  author: ben
+<% end %>
+
+four:
+  content: "Send"
+  created_at: <%= 2.years.ago %>
+  author: kim
+four:
+  content: "me to"
+  created_at: <%= 2.hours.ago %>
+  author: example_user
+
+six:
+  content: "Mars"
+  created_at: <%= 7.minutes.ago %>
+  author: kim

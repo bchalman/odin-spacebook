@@ -1,11 +1,25 @@
 <h1>Spacebook</h1>
 
-<div>
-  <p>The virtual home base for spacefarers like you!</p>
-</div>
-
 <hr>
 
-<div>
-  <%= render 'shared/stats' if current_user %>
+<% if user_signed_in? %>
+  <div class="row">
+    <aside col="col-1">
+      <section class="user_info">
+        <%= render 'shared/info' %>
+      </section>
+      <section class="post_form">
+        <%= render 'shared/post_form' %>
+      </section>
+    </aside>
+  <div class="col-2">
+    <h3>Post Feed</h3>
+    <%= render 'shared/feed' %>
+  </div>
 </div>
+<% else %>
+  <div class="welcome">
+    <h3> Welcome to the virtual home base for spacefarers like you!</h3>
+    <%= link_to "Sign up now!", new_user_registration_path, class: "button" %>
+  </div>
+<% end %>
