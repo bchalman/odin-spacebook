@@ -86,6 +86,14 @@ class UserTest < ActiveSupport::TestCase
      end
    end
 
+   test "associated likes should be destroyed with user" do
+     @user.save
+     @user.likes.create!(liked_post: posts(:one))
+     assert_difference 'Like.count', -1 do
+       @user.destroy
+     end
+   end
+
    test "feed should only contain posts from friends" do
      ben = users(:ben)
      kim = users(:kim)

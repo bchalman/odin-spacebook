@@ -7,15 +7,15 @@ class Friendship < ApplicationRecord
   after_destroy :destroy_mirror_friendship
 
   def mirror_friendship
-    unless is_mirrored?
+    unless is_mirrored
       Friendship.create(friend_id: self.user_id,
                           user_id: self.friend_id)
     end
   end
 
   def destroy_mirror_friendship
-    if friendship = is_mirrored?
-      friendship.destroy
+    if f = is_mirrored
+      f.destroy
     end
   end
 
@@ -27,7 +27,7 @@ class Friendship < ApplicationRecord
 
   private
 
-    def is_mirrored?
+    def is_mirrored
       Friendship.find_by(friend_id: self.user_id,
                            user_id: self.friend_id)
     end

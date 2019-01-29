@@ -31,7 +31,8 @@ four:
   content: "Send"
   created_at: <%= 2.years.ago %>
   author: kim
-four:
+
+five:
   content: "me to"
   created_at: <%= 2.hours.ago %>
   author: example_user

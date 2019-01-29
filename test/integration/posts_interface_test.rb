@@ -22,6 +22,8 @@ class PostsInterfaceTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_url
     follow_redirect!
     assert_match "Test", response.body
+    # ensure likes are present in post view
+    assert_select 'span', text: '0 likes'
     # delete post
     assert_select 'a', text: 'delete'
     first_post = @user.posts.paginate(page: 1).first

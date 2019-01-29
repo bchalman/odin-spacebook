@@ -8,4 +8,10 @@
                                   data: { confirm: "Are you sure?" } %>
     <% end %>
   </span>
+  <% if post.likes.map(&:liker).include?(current_user) %>
+    <%= render partial: 'shared/unlike_form', locals: {post: post} %>
+  <% else %>
+    <%= render partial: 'shared/like_form', locals: {post: post} %>
+  <% end %>
+  <span class="likes"><%= pluralize(post.likes.count, 'like') %><span>
 </li>

@@ -3,7 +3,7 @@
     <p>You have requests to be friends with:</p>
     <ul>
     <% current_user.requesting_friends.each do |friend| %>
-      <li><%= link_to friend.name, friend %> |
+      <li><%= link_to friend.name, friend %>
           <%= render partial: 'accept_request', locals: {user: friend} %></li>
     <% end %>
     <ul>
