@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  content: "Test"
+  author: example_user
+  post: one
+  created_at: <%= 5.minutes.ago %>
+
+two:
+  content: "Noooooo"
+  author: kim
+  post: two
+  created_at: <%= 5.minutes.ago %>

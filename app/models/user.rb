@@ -17,6 +17,8 @@ class User < ApplicationRecord
   has_many :posts, foreign_key: :author_id, dependent: :destroy
   has_many :likes, foreign_key: :liker_id, dependent: :destroy
   has_many :liked_posts, through: :likes, source: :liked_post
+  has_many :comments, foreign_key: :author_id, dependent: :destroy
+  has_many :posts_commented, through: :comments, source: :post
 
   def send_friend_request_to(other_user)
     requested_friends << other_user

@@ -20,6 +20,11 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to new_user_session_path
   end
 
+  test "should redirect show when not logged in" do
+    get post_path(@post)
+    assert_redirected_to new_user_session_path
+  end
+
   test "should redirect destroy for other user's post" do
     sign_in(users(:kim))
     post = posts(:one)
@@ -28,4 +33,5 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     end
     assert_redirected_to root_url
   end
+
 end

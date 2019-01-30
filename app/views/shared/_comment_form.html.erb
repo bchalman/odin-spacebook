@@ -1,0 +1,10 @@
+<%= form_for(current_user.comments.build
+             # , remote: true
+           ) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div><%= hidden_field_tag :post_id, post.id %></div>
+  <div class="field">
+    <%= f.text_area :content, placeholder: "Comment..." %>
+  </div>
+  <%= f.submit "Comment", class: "button" %>
+<% end %>

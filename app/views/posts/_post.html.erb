@@ -14,4 +14,17 @@
     <%= render partial: 'shared/like_form', locals: {post: post} %>
   <% end %>
   <span class="likes"><%= pluralize(post.likes.count, 'like') %><span>
+  <div class="comments">
+    <% if post.comments.any? %>
+      <ol>
+        <%= render post.first_five_comments %>
+      </ol>
+      <% if post.comments.size > 5 %>
+        <%= link_to "More >>", post %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="comment_form">
+    <%= render partial: 'shared/comment_form', locals: {post: post} %>
+  </div>
 </li>

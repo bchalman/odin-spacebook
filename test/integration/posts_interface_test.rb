@@ -24,6 +24,8 @@ class PostsInterfaceTest < ActionDispatch::IntegrationTest
     assert_match "Test", response.body
     # ensure likes are present in post view
     assert_select 'span', text: '0 likes'
+    # ensure comments are present in post view
+    assert_select 'li>span.content', text: 'Test'
     # delete post
     assert_select 'a', text: 'delete'
     first_post = @user.posts.paginate(page: 1).first
