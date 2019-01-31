@@ -5,7 +5,7 @@ class FriendRequestsController < ApplicationController
     @user = User.find(params[:recipient_id])
     current_user.send_friend_request_to(@user)
     respond_to do |format|
-      format.html { redirect_to @user }
+      format.html { redirect_to request.referrer || @user }
       format.js
     end
   end
@@ -15,7 +15,7 @@ class FriendRequestsController < ApplicationController
     @user = @request.recipient
     current_user.remove_friend_request(@user)
     respond_to do |format|
-      format.html { redirect_to @user }
+      format.html { redirect_to request.referrer || @user }
       format.js
     end
   end

@@ -16,7 +16,7 @@ class FriendshipsController < ApplicationController
     @friendship.destroy
     # current_user.remove_friendship_with(@user)
     respond_to do |format|
-      format.html { redirect_to @user }
+      format.html { redirect_to request.referrer || @user }
       format.js
     end
   end

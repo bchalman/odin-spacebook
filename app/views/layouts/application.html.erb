@@ -10,24 +10,26 @@
   </head>
 
   <body>
-    <div class="container">
-      <div class="user_nav">
-        <% if user_signed_in? %>
-          Logged in as <strong><%= current_user.name %></strong>
-          <%= link_to 'View my profile', user_path(current_user) %> |
-          <%= link_to 'Edit profile', edit_user_registration_path %> |
-          <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-        <% else %>
-          <%= link_to 'Home', root_path %> |
-          <%= link_to 'Sign up', new_user_registration_path %> |
-          <%= link_to 'Log in', new_user_session_path %>
+    <header class="navbar">
+      <div class="container">
+        <%= link_to 'Spacebook', root_path, id: "logo" %>
+        <div class="user_nav">
+          <% if user_signed_in? %>
+            Logged in as <strong><%= current_user.name %></strong>
+            <%= link_to 'View my profile', user_path(current_user) %> |
+            <%= link_to 'Edit profile', edit_user_registration_path %> |
+            <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+          <% else %>
+            <%= link_to 'Sign up', new_user_registration_path %> |
+            <%= link_to 'Log in', new_user_session_path %>
+          <% end %>
+        </div>
+        <% flash.each do |type, message| %>
+          <%= content_tag(:div, message, class: "alert alert-#{type}") %>
         <% end %>
-      </div>
-      <% flash.each do |type, message| %>
-        <%= content_tag(:div, message, class: "alert alert-#{type}") %>
-      <% end %>
 
-      <%= yield %>
-    </div>
+        <%= yield %>
+      </div>
+    </header>
   </body>
 </html>
