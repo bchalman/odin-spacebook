@@ -37,6 +37,8 @@ gem 'devise'
 gem 'will_paginate'
 gem 'jquery-rails'
 gem 'faker'
+gem 'omniauth-facebook'
+gem 'figaro'
 
 # gem 'bootstrap-will_paginate',
 # gem 'bootstrap-sass',
