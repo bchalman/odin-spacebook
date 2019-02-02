@@ -44,6 +44,7 @@ gem 'figaro'
 
 group :production do
   gem 'rails_12factor'
+  gem 'sendgrid-ruby'
 end
 
 # Reduces boot times through caching; required in config/boot.rb
