@@ -27,3 +27,9 @@ If the test suite passes, you'll be ready to run the app in a local server:
 ```
 $ rails server
 ```
+
+## Features to be added:
+
+- Posts allow images
+- Profile photo upload
+- Styling
