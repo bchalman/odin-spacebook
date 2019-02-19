@@ -13,24 +13,26 @@
     <header class="navbar">
       <div class="container">
         <%= link_to 'Spacebook', root_path, id: "logo" %>
-        <div class="user_nav">
+        <ul class="user_nav">
           <% if user_signed_in? %>
-            Logged in as <strong><%= current_user.name %></strong>
-            <%= link_to 'View my profile', user_path(current_user) %> |
-            <%= link_to 'Edit profile', edit_user_registration_path %> |
-            <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+            <li>Logged in as <strong><%= current_user.name %></strong></li>
+            <li><%= link_to 'View my profile', user_path(current_user) %></li>
+            <li><%= link_to 'Edit profile', edit_user_registration_path %> </li>
+            <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
           <% else %>
-            <%= link_to 'Sign up', new_user_registration_path %> |
-            <%= link_to 'Log in', new_user_session_path %> | 
-            <%= link_to "Log in with Facebook", user_facebook_omniauth_authorize_path %>
+            <li><%= link_to 'Sign up', new_user_registration_path %></li>
+            <li><%= link_to 'Log in', new_user_session_path %></li>
+            <li id="fb_nav"><%= link_to "Log in with Facebook", user_facebook_omniauth_authorize_path %></li>
           <% end %>
         </div>
+      </div>
+    </header>
+    <main>
         <% flash.each do |type, message| %>
           <%= content_tag(:div, message, class: "alert alert-#{type}") %>
         <% end %>
 
         <%= yield %>
-      </div>
-    </header>
+    </main>
   </body>
 </html>
