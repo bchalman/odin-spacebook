@@ -1,4 +1,5 @@
-<li id="post-<%= post.id %>">
+<li class="post" id="post-<%= post.id %>">
+  <%= gravatar_for(@user) %>
   <%= link_to post.author.name, post.author %>
   <span class="content"><%= post.content %></span>
   <span class="timestamp">
@@ -8,12 +9,15 @@
                                   data: { confirm: "Are you sure?" } %>
     <% end %>
   </span>
+  <span class="likes"><%= pluralize(post.likes.count, 'like') %></span>
   <% if post.likes.map(&:liker).include?(current_user) %>
     <%= render partial: 'shared/unlike_form', locals: {post: post} %>
   <% else %>
     <%= render partial: 'shared/like_form', locals: {post: post} %>
   <% end %>
-  <span class="likes"><%= pluralize(post.likes.count, 'like') %><span>
+  <% if post.comments.any? %>
+    <h4>Comments:</h4>
+  <% end %>
   <div class="comments">
     <% if post.comments.any? %>
       <ol>

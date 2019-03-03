@@ -1,4 +1,5 @@
-<li id="comment-<% comment.id%>">
+<li class="comment" id="comment-<%= comment.id%>">
+  <!-- <%= gravatar_for(@user) %> -->
   <%= link_to comment.author.name, comment.author %>
   <span class="content"><%= comment.content %></span>
   <span class="timestamp">

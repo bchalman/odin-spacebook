@@ -6,6 +6,7 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -15,7 +16,7 @@
         <%= link_to 'Spacebook', root_path, id: "logo" %>
         <ul class="user_nav">
           <% if user_signed_in? %>
-            <li>Logged in as <strong><%= current_user.name %></strong></li>
+            <li><span>Logged in as <strong><%= current_user.name %></strong></span></li>
             <li><%= link_to 'View my profile', user_path(current_user) %></li>
             <li><%= link_to 'Edit profile', edit_user_registration_path %> </li>
             <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>

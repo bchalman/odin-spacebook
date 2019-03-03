@@ -1,8 +1,10 @@
-<span id="like-<% post.id %>">
+<span id="like-<%= post.id %>">
   <%= form_for(current_user.likes.build
     #, remote: true
     ) do |f| %>
     <div><%= hidden_field_tag :liked_post_id, post.id %></div>
-    <%= f.submit 'like', class: "button" %>
+    <%= button_tag( :class => "button") do %>
+      <i class="fa fa-heart-o"></i> Like this post!
+    <% end %>
   <% end %>
 </span>

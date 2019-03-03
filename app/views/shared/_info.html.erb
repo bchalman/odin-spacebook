@@ -1,9 +1,11 @@
 <% @user ||= current_user %>
 <div class="info">
-  <h2>
+  <div>
     <%= gravatar_for(@user) %>
-    <%= @user.name %>
-  </h2>
+    <h2 id="user_info_name">
+      <%= @user.name %>
+    </h2>
+  </div>
   <span><%= pluralize(current_user.posts.count, "post") %></span> |
   <a href="<%= friends_user_path(@user) %>">
     <strong id="friends" class="stat">
