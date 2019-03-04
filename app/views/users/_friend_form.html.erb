@@ -1,5 +1,5 @@
 <% unless current_user == user %>
-  <div id="friend_form">
+  <div class="friend_form">
     <% if current_user.friends.include?(user) %>
       <p>You are friends with <%= user.name %></p>
       <%= render partial: 'unfriend', locals: {user: user} %>

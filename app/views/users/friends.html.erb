@@ -1,14 +1,18 @@
 <h1><%= @user.name %>'s friends</h1>
 
-<div class="user_info">
-    <%= render 'shared/info' %>
-</div>
+<div class="row">
+  <aside class="col-1">
+    <div class="user_info">
+        <%= render 'shared/info' %>
+    </div>
+  </aside>
 
-<div class="friends">
-  <% if @users.any? %>
-    <ul class="users friends">
-      <%= render @users %>
-    </ul>
-    <%= will_paginate %>
-  <% end %>
+  <div class="friends col-2">
+    <% if @users.any? %>
+      <ul class="users friends">
+        <%= render @users %>
+      </ul>
+      <%= will_paginate %>
+    <% end %>
+  </div>
 </div>

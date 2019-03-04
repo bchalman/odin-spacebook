@@ -94,6 +94,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
+	margin-top: 65px;
   font-size: 3em;
   letter-spacing: -2px;
   margin-bottom: 30px;
@@ -143,7 +144,7 @@ p {
 .user_nav {
   display: flex;
   float: right;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   height: 100%;
   width: 450px;
@@ -156,10 +157,6 @@ p {
 
 .user_nav li a {
   color: white;
-}
-
-#fb_nav {
-  flex: 2
 }
 
 /* Welcome page */
@@ -240,20 +237,31 @@ form {
 	margin: 0;
 }
 
+input {
+	// height: 35px;
+	// border: 2px solid #c1deff;
+  // border-radius: 8px;
+	// color: #112438;
+	// background-color:
+	background-color: #b3d7ff;
+	border: 2px solid #2367af;
+	border-radius: 5px;
+	color: #112438;
+	height: 25px;
+	padding: 5px 15px;
+}
 
 .field input {
-	height: 35px;
-	border: 2px solid #c1deff;
-  border-radius: 8px;
-	color: #112438;
 	width: 80%;
+	background-color: white;
+	color: #112438;
 }
 
 .field_with_errors input {
 	border-color: red;
 }
 
-.actions input {
+.actions input, .button_to input {
 	width: 180px;
 	height: 30px;
 	border: 2px solid #c1deff;
@@ -265,6 +273,11 @@ form {
 
 .field label {
 	margin-bottom: 5px;
+}
+
+.field i {
+	margin: 0 15px;
+	text-align: center;
 }
 
 .actions {
@@ -370,7 +383,7 @@ h2 {
   }
 }
 
-.alert-success {
+.alert-success, .alert-notice {
 	margin: 65px 65px 15px 65px;
 	padding: 15px;
 	color: green;
@@ -471,9 +484,6 @@ h2 {
 .comments {
 	margin-left: 60px;
 	margin-top: 20px;
-	a {
-		margin-left: 60px;
-	}
 }
 
 .comment_form {
@@ -499,4 +509,54 @@ span.picture {
   input {
     border: 0;
   }
+}
+
+// show page
+
+#show_name {
+	margin-top: 65px;
+}
+
+.links {
+	display: flex;
+	justify-content: space-around;
+}
+
+.links a {
+	text-align: center;
+	width: 250px;
+	height: 35px;
+	background-color: #b3d7ff;
+	border: 2px solid #2367af;
+	border-radius: 5px;
+	color: #112438;
+	padding: 5px 15px;
+	text-decoration: none;
+}
+
+
+// index
+
+.friend_form {
+	margin-top: 5px;
+}
+
+// pagination
+
+.pagination {
+	margin: 0 auto;
+  display: flex;
+	height: 40px;
+	justify-content: center;
+	align-items: center;
+}
+
+.pagination * {
+  padding: 8px 16px;
+  text-decoration: none;
+	border: 1px solid #2367af;
+}
+
+.pagination .current {
+	background-color: #b5d8ff;
 }

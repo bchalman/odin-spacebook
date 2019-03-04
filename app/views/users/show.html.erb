@@ -1,29 +1,31 @@
-<h1><%= @user.name %></h1>
+<h1 id="show_name"><%= @user.name %></h1>
 
-<div>
-  <div class="user_info">
-    <%= render 'shared/info' %>
-  </section>
-  <div>
-    <%= render partial: 'friend_form', locals: {user: @user} if user_signed_in? %>
+<div class="row">
+  <aside class="col-1">
+    <div class="user_info">
+      <%= render 'shared/info' %>
+    </section>
+    <div>
+      <%= render partial: 'friend_form', locals: {user: @user} if user_signed_in? %>
+    </div>
+    <div class="pending_requests">
+      <%= render 'pending_requests_form' if current_user == @user%>
+    </div>
+  </aside>
+
+
+  <div class="col-2">
+    <% if @user.posts.any? %>
+      <h3>Posts (<%= @user.posts.count %>)</h3>
+      <ol class="posts">
+        <%= render @posts %>
+      </ol>
+      <%= will_paginate @posts %>
+    <% end %>
   </div>
-  <div class="pending_requests">
-    <%= render 'pending_requests_form' if current_user == @user%>
-  </div>
-</div>
-
-
-<div>
-  <% if @user.posts.any? %>
-    <h3>Posts (<%= @user.posts.count %>)</h3>
-    <ol class="posts">
-      <%= render @posts %>
-    </ol>
-    <%= will_paginate @posts %>
-  <% end %>
 </div>
 
 <div class=links>
-  <%= link_to "All users", users_path %> |
+  <%= link_to "All users", users_path %>
   <%= link_to "Home", root_path %>
 </div>
