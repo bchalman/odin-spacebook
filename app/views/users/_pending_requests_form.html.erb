@@ -1,6 +1,6 @@
 <% if current_user.requesting_friends.any? %>
   <div class="friends_requesting">
-    <p>You have requests to be friends with:</p>
+    <p>The following people have requested to be your friend:</p>
     <ul>
     <% current_user.requesting_friends.each do |friend| %>
       <li><%= link_to friend.name, friend %>
